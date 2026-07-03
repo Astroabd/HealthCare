@@ -13,9 +13,11 @@ import java.time.LocalDateTime;
 @Builder
 @Document(collection = "notes")
 public class Notes {
+
     @Id
     private String id;
     private Long patientId;
     private String Content;
     private LocalDateTime CreatedAt;
+
 }

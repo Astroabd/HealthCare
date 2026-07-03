@@ -12,6 +12,15 @@
         <module name="gateway" />
         <module name="patient" />
       </profile>
+      <profile name="Annotation profile for notes" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="notes" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="service_patient" target="17" />
@@ -22,6 +31,7 @@
       <module name="configserver" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="notes" options="-parameters" />
       <module name="patient" options="-parameters" />
       <module name="service_patient" options="-parameters" />
     </option>
