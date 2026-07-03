@@ -31,7 +31,7 @@ public class NotesController {
     public ResponseEntity<NotesResponse> createNote(@RequestBody @Valid CreateNoteDto createNoteDto){
         return new ResponseEntity<>(notesService.createNote(createNoteDto), HttpStatus.CREATED);
     }
-    //this endpoint is used to update a note id
+    //this endpoint is used to update a note  requiring a note id and the new content, it will return the updated note with its id and the patientId
     @PutMapping("/{id}")
     public ResponseEntity<NotesResponse> updateNote(@PathVariable String id,
                                                     @RequestBody @Valid UpdateNoteDto updateNoteDto){
