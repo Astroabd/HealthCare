@@ -19,7 +19,7 @@ import java.util.List;
 public class NotesController {
     private final NotesService notesService;
 
-    //it this endpoint gives all the notes that are related to the patientId
+    // this endpoint gives all the notes that are related to the patientId
     @GetMapping("/{patientId}")
     public ResponseEntity<List<NotesResponse>> findNotesByPatientId(@PathVariable Long patientId){
         return new ResponseEntity<>(notesService.findNotesByPatientId(patientId), HttpStatus.OK);
