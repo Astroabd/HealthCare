@@ -20,11 +20,10 @@ public class NotesController {
     private final NotesService notesService;
 
     // this endpoint gives all the notes that are related to the patientId
-    @GetMapping("/patient/{patientId}")
+    @GetMapping("/{patientId}")
     public ResponseEntity<List<NotesResponse>> findNotesByPatientId(@PathVariable Long patientId){
         return new ResponseEntity<>(notesService.findNotesByPatientId(patientId), HttpStatus.OK);
     }
-
 
     // this endpoint is used to create a note requiring a patientId and a note content, it will return the created note with its id and the patientId
     @PostMapping
