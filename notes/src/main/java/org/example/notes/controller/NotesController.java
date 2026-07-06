@@ -37,7 +37,7 @@ public class NotesController {
                                                     @RequestBody @Valid UpdateNoteDto updateNoteDto){
         return new ResponseEntity<>(notesService.updateNote(id, updateNoteDto), HttpStatus.CREATED);
     }
-
+    // this endpoint is used to delete a note requiring a note id, it will return no content
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNote(@PathVariable String id){
         notesService.deleteNote(id);
