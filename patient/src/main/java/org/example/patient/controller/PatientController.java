@@ -42,7 +42,7 @@ public class PatientController {
 
     }
 
-    //modifying a patient by their id, first we assure if the patient by this id exists ,if not throws a PatientNotFoundException, u can modify its fields
+    // modifying a patient by their id, first we assure if the patient by this id exists ,if not throws a PatientNotFoundException, u can modify its fields
     //and as the create new patient method each value needs to be checked then it returns the PatientResponse and an HTtp status
     @PutMapping("/{id}")
     public ResponseEntity<PatientResponse> updatePatient(@PathVariable Long id,
@@ -51,7 +51,7 @@ public class PatientController {
     }
 
     //it deletes patient by the id but before anything plays out we need to verfiy if the patient with this id actually exists if yes it proceeds to delete the patient
-    // returning a noContent http status which is 204 meaning theres no content
+    //returning a noContent http status which is 204 meaning theres no content
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id){
         patientService.deletePatient(id);
