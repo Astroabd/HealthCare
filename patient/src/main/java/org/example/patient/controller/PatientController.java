@@ -21,14 +21,14 @@ import java.util.List;
 public class PatientController {
     private final PatientService patientService;
 
-    // Get a list of all the patients in the DB
+    //Get a list of all the patients in the DB
     @GetMapping
     public ResponseEntity<List<Patient>> findAllPatients() {
         return ResponseEntity.ok(patientService.findAllPatients());
     }
 
 
-    // Get the patient from DB by id if the patient doesn't exist, return a 404 error with a message "Patient not found with id: {id} not found"
+    //Get the patient from DB by id if the patient doesn't exist, return a 404 error with a message "Patient not found with id: {id} not found"
     @GetMapping("/{id}")
     public ResponseEntity<PatientResponse> findPatientById(@PathVariable Long id) {
         return ResponseEntity.ok(patientService.findPatientById(id));
