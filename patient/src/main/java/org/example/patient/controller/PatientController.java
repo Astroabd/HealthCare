@@ -11,23 +11,24 @@ import org.example.patient.service.PatientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+
+
 @RestController
-@RequestMapping("/patients")
+@RequestMapping("/patients")    
 @RequiredArgsConstructor
 public class PatientController {
     private final PatientService patientService;
 
-    // Get a list of all the patients in the DB
+    //Get a list of all the patients in the DB
     @GetMapping
     public ResponseEntity<List<Patient>> findAllPatients() {
         return ResponseEntity.ok(patientService.findAllPatients());
     }
 
 
-    // Get the patient from DB by id if the patient doesn't exist, return a 404 error with a message "Patient not found with id: {id} not found"
+    //Get the patient from DB by id if the patient doesn't exist, return a 404 error with a message "Patient not found with id: {id} not found"
     @GetMapping("/{id}")
     public ResponseEntity<PatientResponse> findPatientById(@PathVariable Long id) {
         return ResponseEntity.ok(patientService.findPatientById(id));
@@ -41,7 +42,7 @@ public class PatientController {
 
     }
 
-    //modifying a patient by their id, first we assure if the patient by this id exists ,if not throws a PatientNotFoundException, u can modify its fields
+    // modifying a patient by their id, first we assure if the patient by this id exists ,if not throws a PatientNotFoundException, u can modify its fields
     //and as the create new patient method each value needs to be checked then it returns the PatientResponse and an HTtp status
     @PutMapping("/{id}")
     public ResponseEntity<PatientResponse> updatePatient(@PathVariable Long id,
@@ -50,7 +51,7 @@ public class PatientController {
     }
 
     //it deletes patient by the id but before anything plays out we need to verfiy if the patient with this id actually exists if yes it proceeds to delete the patient
-    // returning a noContent http status which is 204 meaning theres no content
+    //returning a noContent http status which is 204 meaning theres no content
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id){
         patientService.deletePatient(id);
