@@ -25,7 +25,7 @@ public class NotesController {
         return new ResponseEntity<>(notesService.findNotesByPatientId(patientId), HttpStatus.OK);
     }
 
-    // this endpoint is used to create a note requiring a patientId and a note content, it will return the created note with its id and the patientId
+    //this endpoint is used to create a note requiring a patientId and a note content, it will return the created note with its id and the patientId
     @PostMapping
     public ResponseEntity<NotesResponse> createNote(@RequestBody @Valid CreateNoteDto createNoteDto){
         return new ResponseEntity<>(notesService.createNote(createNoteDto), HttpStatus.CREATED);
