@@ -5,4 +5,5 @@ public enum Risk {
     BORDERLINE,
     IN_DANGER,
     EARLY_ONSET
+    
 }
