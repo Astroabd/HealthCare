@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 public class NotesResponse {
 
-    private Long patientId;
-    private String Content;
+
+    private String content;
 
 
 }
