@@ -1,3 +1,7 @@
 spring:
   application:
     name: assessment
+
+  config:
+    import: configserver:http://localhost:8888/
+
