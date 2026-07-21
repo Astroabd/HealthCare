@@ -1,7 +1,7 @@
 package org.example.assessment.Controller;
 
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.example.assessment.enums.Risk;
 import org.example.assessment.service.AssessmentService;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/assessment")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AssessmentController {
 private final AssessmentService assessmentService;
     @GetMapping("patient/{patientId}")
