@@ -1,12 +1,13 @@
 package org.example.assessment.client;
 
 
-import org.example.patient.dto.PatientResponse;
+import org.example.assessment.dto.PatientResponse;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient("PATIENT")
 public interface PatientClient {
-     ResponseEntity<PatientResponse> findPatientById(@PathVariable Long id);
+     @GetMapping("patients/{id}")
+     PatientResponse findPatientById(@PathVariable Long id);
 }
