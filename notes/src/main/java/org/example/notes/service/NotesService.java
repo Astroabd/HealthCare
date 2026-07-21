@@ -1,7 +1,7 @@
 package org.example.notes.service;
 
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.example.notes.dto.CreateNoteDto;
 import org.example.notes.dto.NotesResponse;
 import org.example.notes.dto.UpdateNoteDto;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class NotesService {
     private final NotesRepository notesRepository;
 
