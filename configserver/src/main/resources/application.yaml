@@ -5,13 +5,12 @@ spring:
     name: configserver
   profiles:
     active: git
-
   cloud:
     config:
       server:
         git:
           uri: git@github.com:Astroabd/ConfigHealth.git
           ignore-local-ssh-settings: true
+          strict-host-key-checking: false
           private-key: ${GIT_SSH_PRIVATE_KEY}
-          host-key: AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
-          host-key-algorithm: ssh-ed25519
+
