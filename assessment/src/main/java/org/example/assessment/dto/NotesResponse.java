@@ -9,5 +9,4 @@ public class NotesResponse {
 
     private String content;
 
-
 }
