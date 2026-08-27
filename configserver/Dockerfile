@@ -1,28 +1,34 @@
-##without maven build u need to build the jar file first and then copy it to the docker image manually
-#FROM eclipse-temurin:17-jdk
-#
-##container information
-#LABEL maintainer="Astro"
-#LABEL description="This is a config server for spring cloud config"
-#LABEL version="0.0.1"
-#LABEL license="Apache License 2.0"
-#WORKDIR /app
-#COPY target/configserver-0.0.1-SNAPSHOT.jar  app.jar
-#
-#
-##the best practice is to sepcifiy this in dockercompose.yml file
-#EXPOSE 8888
-#ENTRYPOINT ["java", "-jar", "app.jar"]
-
-##Compile the jar file first
+# Stage 1: compile the Spring Boot application
 FROM maven:3.9-eclipse-temurin-17 AS build
+
 WORKDIR /app
+
+# Download dependencies separately so Docker can cache them
 COPY pom.xml .
+RUN mvn -B -ntp dependency:go-offline
+
+# Copy and compile the source code
 COPY src ./src
-RUN mvn clean package -DskipTests
-##Excuate the jar file in the final image
-FROM eclipse-temurin:17-jdk
+RUN mvn -B -ntp clean package -DskipTests
+
+
+# Stage 2: run the compiled application
+FROM eclipse-temurin:17-jre-jammy
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && groupadd --system spring \
+    && useradd --system --gid spring --create-home spring \
+    && mkdir -p /home/spring/.ssh \
+    && chown -R spring:spring /home/spring
+
 WORKDIR /app
+
 COPY --from=build /app/target/*.jar app.jar
+
+USER spring:spring
+
 EXPOSE 8888
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

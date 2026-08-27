@@ -10,7 +10,5 @@ spring:
       server:
         git:
           uri: git@github.com:Astroabd/ConfigHealth.git
-          ignore-local-ssh-settings: true
-          strict-host-key-checking: false
-          private-key: ${GIT_SSH_PRIVATE_KEY}
-
+          default-label: master
+          clone-on-start: true
