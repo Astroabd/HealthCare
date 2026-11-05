@@ -1,4 +1,4 @@
-# HealthCare — Installation et démarrage local
+# HealthCare: Installation et démarrage local
 
 HealthCare est une application pédagogique développée avec Java et Spring Boot. Elle permet de gérer les patients, leurs notes médicales et d'évaluer leur risque de diabète.
 
